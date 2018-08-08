@@ -25,7 +25,6 @@
     <script>
       window.onload = function() {
         $("#music2").contents().find("input[name='media']").attr("width","300");
-        alert("!");
       };
     </script>
 
@@ -56,16 +55,16 @@
 
           <!-- 音乐外链插件 -->
           <div>
-            <iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=32 src="//dl.stream.qqmusic.qq.com/M800002UvjTe0vA2a1.mp3?vkey=5E0138609B442B7302C4274C0039021F50A91096AEE91418D3A595CED905EA3E5429AA95C6605A02A861B63446CCC9A80380085A125AE4E5&guid=5150825362&fromtag=1">
+            <iframe allow="autoplay" autoplay id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=32 src="//dl.stream.qqmusic.qq.com/M800002UvjTe0vA2a1.mp3?vkey=5E0138609B442B7302C4274C0039021F50A91096AEE91418D3A595CED905EA3E5429AA95C6605A02A861B63446CCC9A80380085A125AE4E5&guid=5150825362&fromtag=1">
             </iframe>
           </div>
           <div>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1293951024&auto=1&height=66">
+            <iframe allow="autoplay" autoplay frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1293951024&auto=1&height=66">
             </iframe>
           </div>
           <div>
-            <iframe id="music2" frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=32 src="media/6.mp3">
-            </iframe>
+            <audio controls allow="autoplay" autoplay src="media/6.mp3">
+            </audio>
           </div>
 
         </div>
