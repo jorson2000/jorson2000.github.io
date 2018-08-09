@@ -245,9 +245,8 @@
         url: "media/6.lrc",
         success: function(lrc){
           alert(lrc);
-          r = lrc.responseText;
-          result = parseLyric(r);
-          alert(r);
+          result = parseLyric(lrc);
+          alert(result);
         }
       });
     });
