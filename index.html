@@ -52,8 +52,7 @@
             </audio>
             <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
             </iframe>
-            <iframe src="media/6.lrc">
-            </iframe>
+            <div id="geci"></div>
           </div>
 
         </div>
@@ -245,7 +244,7 @@
         type: "GET",
         url: "media/6.lrc",
         success: function(lrc){
-          alert(lrc);
+          $("#geci").html(lrc.responseText); //替换标签内的html
         }
       });
     });
