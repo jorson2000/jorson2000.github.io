@@ -52,7 +52,7 @@
             </audio>
             <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
             </iframe>
-            <iframe id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.lrc" allow="autoplay">
+            <iframe src="media/6.lrc">
             </iframe>
           </div>
 
@@ -243,8 +243,7 @@
     $(document).ready(function(){
       $.ajax({
         type: "GET",
-        url: "media/6.txt",
-        dataType: "json",
+        url: "media/6.lrc",
         success: function(lrc){
           alert(lrc);
         }
