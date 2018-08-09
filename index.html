@@ -48,9 +48,11 @@
 
           <!-- 音乐外链插件 -->
           <div>
-            <audio controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay">
+            <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay">
             </audio>
             <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
+            </iframe>
+            <iframe id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.lrc" allow="autoplay">
             </iframe>
           </div>
 
@@ -93,7 +95,6 @@
             <!-- <img class="img-fluid mb-3 mb-lg-0" src="img/bg-masthead.jpg" alt=""> -->
             
             <!-- 视频外链 -->
-            <iframe width="640" height="360" src="//player.bilibili.com/player.html?aid=16242277&cid=26506040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             <video class="img-fluid mb-3 mb-lg-0" controls="controls" src="media/6.mp4" autoplay="autoplay" muted></video>
 
           </div>
@@ -236,6 +237,21 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.min.js"></script>
+
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.ajax({
+        type: "GET",
+        url: "media/6.txt",
+        dataType: "json",
+        success: function(lrc){
+          alert(lrc);
+        }
+      });
+    });
+    </script>
+
 
   </body>
 
