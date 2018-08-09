@@ -52,7 +52,7 @@
             </audio>
             <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
             </iframe>
-            <div id="geci" width="300" height="50"></div>
+            <div id="lyricContainer" width="300" height="50"></div>
           </div>
 
         </div>
@@ -244,9 +244,27 @@
         type: "GET",
         url: "media/6.lrc",
         success: function(lrc){
-          alert(lrc);
+          // 获取到歌词lrc，送去parse
           result = parseLyric(lrc);
+          // parse结果为[['秒数','歌词'],['秒数','歌词']…]
           alert(result);
+          lyric = result;
+
+          //获取页面上的audio标签
+          var audio = document.getElementsByTagName('audio'),
+              //显示歌词的元素
+              lyricContainer = document.getElementById('lyricContainer');
+          //监听ontimeupdate事件
+          audio.ontimeupdate = function(e) {
+              //遍历所有歌词，看哪句歌词的时间与当然时间吻合
+              for (var i = 0, l = lyric.length; i < l; i++) {
+                  if (this.currentTime /*当前播放的时间*/ > lyric[i][0]) {
+                      //显示到页面
+                      lyricContainer.textContent = that.lyric[i][1];
+                  };
+              };
+          };
+
         }
       });
     });
