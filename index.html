@@ -48,7 +48,7 @@
 
           <!-- 音乐外链插件 -->
           <div>
-            <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay">
+            <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay" ontimeupdate="myFunction(this)">
             </audio>
             <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
             </iframe>
@@ -302,6 +302,13 @@
             return a[0] - b[0];
         });
         return result;
+    }
+    </script>
+
+    <script>
+    function myFunction(event) {
+        //  currentTime 属性返回视频/音频（audio/video）当前播放位置
+        document.getElementById("lyricContainer").innerHTML = event.currentTime;
     }
     </script>
 
