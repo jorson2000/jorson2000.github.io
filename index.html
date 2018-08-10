@@ -32,7 +32,7 @@
         
         <!-- 音乐外链插件 -->
         <div>
-          <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay" ontimeupdate="myFunction(this)"></audio>
+          <audio id="music" controls="controls" autoplay="autoplay" loop="loop" preload controlsList="nodownload" src="media/6.mp3" allow="autoplay" ontimeupdate="myFunction(this)"></audio>
           <iframe src="media/1.mp3" width="0" height="0" frameborder="0"></iframe>
           <div id="lyricContainer" width="300" height="50"></div>
         </div>
@@ -293,22 +293,31 @@
     </script>
 
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-        wx.config({
-          // 配置信息, 即使不正确也能使用 wx.ready
-          debug: false,
-          appId: '',
-          timestamp: 1,
-          nonceStr: '',
-          signature: '',
-          jsApiList: []
-        });
-        wx.ready(function() {
-          document.getElementById('music').play();
-        });  
+    <script>
+    function autoPlayAudio1() {
+      wx.config({
+        // 配置信息, 即使不正确也能使用 wx.ready
+        debug: false,
+        appId: '',
+        timestamp: 1,
+        nonceStr: '',
+        signature: '',
+        jsApiList: []
       });
+      wx.ready(function() {
+        document.getElementById('music').play();
+      });
+    }
+    // 方法2: "野生"方法, 借用原来老的 WeixinJSBridge
+    function autoPlayAudio2() {
+      window.onload = function() {
+        WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
+          document.getElementById('music').play();
+        });
+      };
+    }
+    autoPlayAudio1(); // 推荐使用方法1
+    autoPlayAudio2(); // 也可以试一试方法2
     </script>
 
   </body>
