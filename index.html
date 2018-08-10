@@ -238,7 +238,7 @@
     <script src="js/grayscale.min.js"></script>
 
 
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
     $(document).ready(function(){
       $.ajax({
         type: "GET",
@@ -268,7 +268,7 @@
         }
       });
     });
-    </script>
+    </script> -->
 
     <script type="text/javascript">
       function parseLyric(text) {
@@ -305,10 +305,36 @@
     }
     </script>
 
-    <script>
+<!--     <script>
     function myFunction(event) {
         //  currentTime 属性返回视频/音频（audio/video）当前播放位置
         document.getElementById("lyricContainer").innerHTML = event.currentTime;
+    }
+    </script> -->
+
+
+    <script>
+    function myFunction(event) {
+
+      $.ajax({
+        type: "GET",
+        url: "media/6.lrc",
+        success: function(lrc){
+          // 获取到歌词lrc，送去parse
+          result = parseLyric(lrc);
+          // parse结果为[['秒数','歌词'],['秒数','歌词']…]
+          alert(result);
+          lyric = result;
+
+              //遍历所有歌词，看哪句歌词的时间与当然时间吻合
+              for (var i = 0, l = lyric.length; i < l; i++) {
+                  if (event.currentTime /*当前播放的时间*/ > lyric[i][0]) {
+                      document.getElementById("lyricContainer").innerHTML = lyric[i][1];
+                  };
+              };
+
+        }
+      });
     }
     </script>
 
