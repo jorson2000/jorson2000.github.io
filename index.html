@@ -28,7 +28,15 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Blog Home</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+        
+        <!-- 音乐外链插件 -->
+        <div>
+          <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay" ontimeupdate="myFunction(this)"></audio>
+          <iframe src="media/1.mp3" width="0" height="0" frameborder="0"></iframe>
+          <div id="lyricContainer" width="300" height="50"></div>
+        </div>
+        
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -45,15 +53,6 @@
               <a class="nav-link js-scroll-trigger" href="#signup">R</a>
             </li>
           </ul>
-
-          <!-- 音乐外链插件 -->
-          <div>
-            <audio id="music" controls="controls" autoplay="autoplay" loop="loop" controlsList="nodownload" src="media/6.mp3" allow="autoplay" ontimeupdate="myFunction(this)">
-            </audio>
-            <iframe src="media/1.mp3" width="0" height="0" frameborder="0">
-            </iframe>
-            <div id="lyricContainer" width="300" height="50"></div>
-          </div>
 
         </div>
       </div>
@@ -237,39 +236,6 @@
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.min.js"></script>
 
-
-<!--     <script type="text/javascript">
-    $(document).ready(function(){
-      $.ajax({
-        type: "GET",
-        url: "media/6.lrc",
-        success: function(lrc){
-          // 获取到歌词lrc，送去parse
-          result = parseLyric(lrc);
-          // parse结果为[['秒数','歌词'],['秒数','歌词']…]
-          alert(result);
-          lyric = result;
-
-          //获取页面上的audio标签
-          var audio = document.getElementsByTagName('audio'),
-              //显示歌词的元素
-              lyricContainer = document.getElementById('lyricContainer');
-          //监听ontimeupdate事件
-          audio.ontimeupdate = function(e) {
-              //遍历所有歌词，看哪句歌词的时间与当然时间吻合
-              for (var i = 0, l = lyric.length; i < l; i++) {
-                  if (this.currentTime /*当前播放的时间*/ > lyric[i][0]) {
-                      //显示到页面
-                      lyricContainer.textContent = that.lyric[i][1];
-                  };
-              };
-          };
-
-        }
-      });
-    });
-    </script> -->
-
     <script type="text/javascript">
       function parseLyric(text) {
         //将文本分隔成一行一行，存入数组
@@ -305,17 +271,8 @@
     }
     </script>
 
-<!--     <script>
-    function myFunction(event) {
-        //  currentTime 属性返回视频/音频（audio/video）当前播放位置
-        document.getElementById("lyricContainer").innerHTML = event.currentTime;
-    }
-    </script> -->
-
-
     <script>
     function myFunction(event) {
-
       $.ajax({
         type: "GET",
         url: "media/6.lrc",
@@ -324,19 +281,16 @@
           result = parseLyric(lrc);
           // parse结果为[['秒数','歌词'],['秒数','歌词']…]
           lyric = result;
-
-              //遍历所有歌词，看哪句歌词的时间与当然时间吻合
-              for (var i = 0, l = lyric.length; i < l; i++) {
-                  if (event.currentTime /*当前播放的时间*/ > lyric[i][0]) {
-                      document.getElementById("lyricContainer").innerHTML = lyric[i][1];
-                  };
-              };
-
+          //遍历所有歌词，看哪句歌词的时间与当然时间吻合
+          for (var i = 0, l = lyric.length; i < l; i++) {
+            if (event.currentTime /*当前播放的时间*/ > lyric[i][0]) {
+              document.getElementById("lyricContainer").innerHTML = lyric[i][1];
+            };
+          };
         }
       });
     }
     </script>
-
 
   </body>
 
