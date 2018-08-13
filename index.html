@@ -309,16 +309,7 @@
         document.getElementById('music').play();
       });
     }
-    // 方法2: "野生"方法, 借用原来老的 WeixinJSBridge
-    function autoPlayAudio2() {
-      window.onload = function() {
-        WeixinJSBridge.invoke('getNetworkType', {}, function(e) {
-          document.getElementById('music').play();
-        });
-      };
-    }
-    // autoPlayAudio1(); // 推荐使用方法1
-    autoPlayAudio2(); // 也可以试一试方法2
+    autoPlayAudio1();
     </script>
 
   </body>
